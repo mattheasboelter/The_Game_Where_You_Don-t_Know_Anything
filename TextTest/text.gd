@@ -18,9 +18,9 @@ var player = ["Hello sir.",
 ]
 
 func _ready():
-	set_process(true)
+	set_process_input(true)
 	
-func _process(delta):
+func _input(event):
 	
 	#set options
 	get_node("Option1").set_text(str("1. ", player[0]))
@@ -56,7 +56,9 @@ func _process(delta):
 		elif (state==5):
 			state=2
 		elif (state==8):
-			state=1
+			state=11
+		elif (state==6):
+			state=9
 			
 	elif (Input.is_key_pressed(KEY_2)):
 		#case switch state algorithm here...
@@ -67,6 +69,12 @@ func _process(delta):
 			state=7
 		elif(state==4):
 			state=2
+		elif(state==7 or state==6):
+			state=9
+		elif (state==5):
+			state=10
+		elif (state==10):
+			state=8
 			
 	elif (Input.is_key_pressed(KEY_3)):
 		#case switch state algorithm 3 here...
@@ -92,15 +100,15 @@ func _process(delta):
 #                         commence dialog!                                #
 #                                                                         #
 ###########################################################################
-	if(pressed==0):
+	if(pressed==1):
 
 		if (state == 2): #Do you smell smoke?
-			player = ["Sir, you should see a doctor", 
+			player = ["Smoke... What's smoke?", 
 			"(lie) Yes, i smell smoke!", 
 			"No, do you?",
 			"(Leave)"
 			]
-			responses = ["Son, even doctors smoke sometimes!",
+			responses = ["Son, smoke is a part of life!",
 			"How odd!",
 			"Yes! there must be a fire somewhere around here!",
 			"goodbye old chap!"
@@ -172,9 +180,20 @@ func _process(delta):
 			"",
 			"goodbye!"
 			]
-		elif (state==9): #scome with me!
+		elif (state==9): #come with me!
 			player = ["Good idea! let's get out of here! (go with him)",
-			"no, thanks. i can take care of myself. (stay)",
+			"C'ya later! (stay)",
 			"*YOU'RE NOT GOING ANYWHERE!!!*",
 			null
+			]
+		elif (state==10):#I'm ready to order.
+			player = ["Alright then. What do you want for breakfast?",
+			"I gotta go. (leave)",
+			null,
+			null,
+			]
+			responses = ["I'll take the eggs and ham please.",
+			"Wait! come back!",
+			"I'm ready to order.",
+			"I'm ready to order."
 			]
