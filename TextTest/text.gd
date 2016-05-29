@@ -4,15 +4,13 @@ extends Label
 var state = 1
 const wait = 75
 var pressed = null
-#responses
+var dilema = "you come across a man"
+#starting values
 var responses = ["Do you smell smoke?",
 "I'm uncomfortable",
 "Yes, i'd like the eggs and ham.",
 "I'm Mr. Green, who are you?",
 ]
-
-
-#player says...
 var player = ["Hello sir.",
 "How are you sir?",
 "May i take your order sir?",
@@ -32,8 +30,10 @@ func _process(delta):
 	#get keypresses
 	if (Input.is_key_pressed(KEY_1) or Input.is_key_pressed(KEY_2) or Input.is_key_pressed(KEY_3) or Input.is_key_pressed(KEY_4)):
 		pressed=1
+		dilema = ""
 	else:
 		pressed=0
+		get_node("Dilema").set_text(str(dilema))
 	
 	#Hide extraneous options
 	if (player[0]==null):
@@ -45,57 +45,64 @@ func _process(delta):
 	elif (player[3]==null):
 		get_node("Option4").set_percent_visible(0)
 	
-	
-	#get response
-	if (Input.is_key_pressed(KEY_1)):
-		set_text(responses[0])
-	elif (Input.is_key_pressed(KEY_2)):
-		set_text(responses[1])
-	elif (Input.is_key_pressed(KEY_3)):
-		set_text(responses[2])
-	elif (Input.is_key_pressed(KEY_4)):
-		set_text(responses[3])
-	
-	#set the state
+
+
+		#set the state
 	if (Input.is_key_pressed(KEY_1)):
 		#case switch state algorithm 1 here...
+		set_text(responses[0])
 		if (state==1):
 			state=2
 		elif (state==5):
 			state=2
-		elif (state==2):
-			state=6
+		elif (state==8):
+			state=1
 			
 	elif (Input.is_key_pressed(KEY_2)):
 		#case switch state algorithm here...
+		set_text(responses[1])
 		if (state==1):
 			state=3
+		elif(state==2):
+			state=7
 		elif(state==4):
 			state=2
 			
 	elif (Input.is_key_pressed(KEY_3)):
 		#case switch state algorithm 3 here...
+		set_text(responses[2])
 		if (state==1):
 			state=4
-			
+		elif (state==6 or state==7):
+			state=8
+		elif (state==2):
+			state=6
+	
 	elif (Input.is_key_pressed(KEY_4)):
 		#case switch state algorithm 4 here...
-		if (state==1):
+		set_text(responses[3])
+		if (state==3 or state==2 or state==5):
+			state=8
+		elif (state==1):
 			state=5
-		
-	if (pressed==0):
-		#print(pressed)
-		
-		#The States are defined here
+			#print(pressed)
+		#CONVERSATION STATES HERE
+###########################################################################
+#                                                                         #
+#                         commence dialog!                                #
+#                                                                         #
+###########################################################################
+	if(pressed==0):
+
 		if (state == 2): #Do you smell smoke?
-			player = ["No... Do you?", 
+			player = ["Sir, you should see a doctor", 
 			"(lie) Yes, i smell smoke!", 
-			"Sir, you should see a doctor",
+			"No, do you?",
 			"(Leave)"
 			]
-			responses = ["Yes! there must be a fire somewhere around here!",
+			responses = ["Son, even doctors smoke sometimes!",
 			"How odd!",
-			"Son, even doctors smoke sometimes!",
+			"Yes! there must be a fire somewhere around here!",
 			"goodbye old chap!"
 			]
 		elif (state == 3): #I'm uncomfortable
@@ -141,4 +148,33 @@ func _process(delta):
 			"This is quite a dilema! lets get out of here before we get hurt. Save yourself, old chap! Thats what i say!",
 			"Terribly sorry old chap! see you around!",
 			"Yes! there must be a fire somewhere around here!"
+			]
+		elif (state == 7): #how odd
+			player = ["Well, sir, may i ask who you are?",
+			"Odd indeed! i wonder where it's coming from!",
+			"(Leave)",
+			null
+			]
+			responses = ["I am Mr. Green! Esteemed insurance salseman! I'm surprised you haven't heard of me. Who are you?",
+			"A fire naturally! Let's get out of here! Save youself! Thats what i always say. Save yourself chap!",
+			"Goodbye fellow!",
+			"How odd!"
+			]
+		elif (state == 8): #goodbye
+			dilema = "you leave him"
+			player = ["(go back)",
+			"(keep walking)",
+			"(turn the next corner to escape)",
+			null
+			]
+			responses = ["Oh! hello again!",
+			"",
+			"",
+			"goodbye!"
+			]
+		elif (state==9): #scome with me!
+			player = ["Good idea! let's get out of here! (go with him)",
+			"no, thanks. i can take care of myself. (stay)",
+			"*YOU'RE NOT GOING ANYWHERE!!!*",
+			null
 			]
