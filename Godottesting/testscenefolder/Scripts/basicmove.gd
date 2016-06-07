@@ -9,7 +9,7 @@ var is_jumping = false
 var jump_timer = 0;
 
 var speed = 70
-var jump_height = 150
+var jump_height = 200
 
 func _ready():
 	# set_process(true)
