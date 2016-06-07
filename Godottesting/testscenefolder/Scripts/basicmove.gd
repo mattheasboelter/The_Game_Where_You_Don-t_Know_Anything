@@ -19,6 +19,8 @@ func _ready():
 	self_collision = get_node('player_collision_sensor')
 	self_collision.add_exception(self)
 
+	set_mode(2) # Disallow rotation on the player
+
 func _input(event):
 	# Handle Keypress Events
 	if(event.is_pressed()):
