@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resource_file type="PackedScene" subresource_count="5" version="2.0" version_name="Godot Engine v2.0.stable.official">
+	<ext_resource path="res://testscenefolder/Scripts/basicmove.gd" type="Script" index="0"></ext_resource>
+	<ext_resource path="res://icon.png" type="Texture" index="1"></ext_resource>
+	<resource type="RectangleShape2D" path="local://2">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2 name="extents"> 9.47223, 8.72589 </vector2>
+
+	</resource>
+	<resource type="RectangleShape2D" path="local://3">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2 name="extents"> 10, 10 </vector2>
+
+	</resource>
+	<main_resource>
+		<dictionary name="_bundled" shared="false">
+			<string> "conn_count" </string>
+			<int> 0 </int>
+			<string> "conns" </string>
+			<int_array  len="0"> 				 </int_array>
+			<string> "editable_instances" </string>
+			<array  len="0" shared="false">
+			</array>
+			<string> "names" </string>
+			<string_array  len="75">
+				<string> "Mother of all" </string>
+				<string> "Position2D" </string>
+				<string> "character" </string>
+				<string> "transform/pos" </string>
+				<string> "input/pickable" </string>
+				<string> "shapes/0/shape" </string>
+				<string> "shapes/0/transform" </string>
+				<string> "shapes/0/trigger" </string>
+				<string> "collision/layers" </string>
+				<string> "collision/mask" </string>
+				<string> "mode" </string>
+				<string> "mass" </string>
+				<string> "friction" </string>
+				<string> "bounce" </string>
+				<string> "gravity_scale" </string>
+				<string> "custom_integrator" </string>
+				<string> "continuous_cd" </string>
+				<string> "contacts_reported" </string>
+				<string> "contact_monitor" </string>
+				<string> "sleeping" </string>
+				<string> "can_sleep" </string>
+				<string> "velocity/linear" </string>
+				<string> "velocity/angular" </string>
+				<string> "damp_override/linear" </string>
+				<string> "damp_override/angular" </string>
+				<string> "script/script" </string>
+				<string> "RigidBody2D" </string>
+				<string> "player_collision" </string>
+				<string> "transform/scale" </string>
+				<string> "shape" </string>
+				<string> "trigger" </string>
+				<string> "_update_shape_index" </string>
+				<string> "CollisionShape2D" </string>
+				<string> "player_sprite" </string>
+				<string> "texture" </string>
+				<string> "Sprite" </string>
+				<string> "player_collision_sensor" </string>
+				<string> "enabled" </string>
+				<string> "cast_to" </string>
+				<string> "layer_mask" </string>
+				<string> "type_mask" </string>
+				<string> "RayCast2D" </string>
+				<string> "Camera2D" </string>
+				<string> "anchor_mode" </string>
+				<string> "rotating" </string>
+				<string> "current" </string>
+				<string> "zoom" </string>
+				<string> "limit/left" </string>
+				<string> "limit/top" </string>
+				<string> "limit/right" </string>
+				<string> "limit/bottom" </string>
+				<string> "drag_margin/h_enabled" </string>
+				<string> "drag_margin/v_enabled" </string>
+				<string> "smoothing/enable" </string>
+				<string> "smoothing/speed" </string>
+				<string> "drag_margin/left" </string>
+				<string> "drag_margin/top" </string>
+				<string> "drag_margin/right" </string>
+				<string> "drag_margin/bottom" </string>
+				<string> "StaticBody2D" </string>
+				<string> "constant_linear_velocity" </string>
+				<string> "constant_angular_velocity" </string>
+				<string> "__meta__" </string>
+				<string> "Panel" </string>
+				<string> "margin/left" </string>
+				<string> "margin/top" </string>
+				<string> "margin/right" </string>
+				<string> "margin/bottom" </string>
+				<string> "focus/ignore_mouse" </string>
+				<string> "focus/stop_mouse" </string>
+				<string> "size_flags/horizontal" </string>
+				<string> "size_flags/vertical" </string>
+				<string> "StaticBody2D1" </string>
+				<string> "StaticBody2D2" </string>
+				<string> "StaticBody2D3" </string>
+			</string_array>
+			<string> "node_count" </string>
+			<int> 18 </int>
+			<string> "node_paths" </string>
+			<array  len="0" shared="false">
+			</array>
+			<string> "nodes" </string>
+			<int_array  len="454"> 				-1, -1, 1, 0, -1, 0, 0, 0, 0, 26, 2, -1, 23, 3, 0, 4, 1, 5, 2, 6, 3, 7, 1, 8, 4, 9, 4, 10, 5, 11, 6, 12, 6, 13, 7, 14, 8, 15, 1, 16, 5, 17, 9, 18, 10, 19, 1, 20, 10, 21, 11, 22, 7, 23, 12, 24, 12, 25, 13, 0, 1, 0, 32, 27, -1, 5, 3, 14, 28, 15, 29, 2, 30, 1, 31, 5, 0, 1, 0, 35, 33, -1, 2, 28, 16, 34, 17, 0, 1, 0, 41, 36, -1, 6, 3, 18, 28, 19, 37, 10, 38, 20, 39, 4, 40, 21, 0, 1, 0, 42, 42, -1, 16, 43, 4, 44, 1, 45, 10, 46, 22, 47, 23, 48, 23, 49, 24, 50, 24, 51, 10, 52, 10, 53, 10, 54, 6, 55, 25, 56, 25, 57, 25, 58, 25, 0, 0, 0, 59, 59, -1, 13, 3, 26, 28, 27, 4, 1, 5, 28, 6, 29, 7, 1, 8, 4, 9, 4, 60, 11, 61, 7, 12, 6, 13, 7, 62, 30, 0, 6, 0, 32, 32, -1, 6, 3, 31, 28, 32, 29, 28, 30, 1, 31, 5, 62, 33, 0, 6, 0, 63, 63, -1, 9, 64, 34, 65, 34, 66, 35, 67, 36, 68, 1, 69, 10, 70, 37, 71, 37, 62, 38, 0, 0, 0, 59, 72, -1, 13, 3, 39, 28, 40, 4, 1, 5, 28, 6, 29, 7, 1, 8, 4, 9, 4, 60, 11, 61, 7, 12, 6, 13, 7, 62, 41, 0, 9, 0, 32, 32, -1, 6, 3, 31, 28, 32, 29, 28, 30, 1, 31, 5, 62, 42, 0, 9, 0, 63, 63, -1, 9, 64, 34, 65, 34, 66, 35, 67, 36, 68, 1, 69, 10, 70, 37, 71, 37, 62, 43, 0, 0, 0, 59, 73, -1, 13, 3, 44, 28, 40, 4, 1, 5, 28, 6, 29, 7, 1, 8, 4, 9, 4, 60, 11, 61, 7, 12, 6, 13, 7, 62, 41, 0, 12, 0, 32, 32, -1, 6, 3, 31, 28, 32, 29, 28, 30, 1, 31, 5, 62, 42, 0, 12, 0, 63, 63, -1, 9, 64, 34, 65, 34, 66, 35, 67, 36, 68, 1, 69, 10, 70, 37, 71, 37, 62, 43, 0, 0, 0, 59, 74, -1, 13, 3, 45, 28, 40, 4, 1, 5, 28, 6, 29, 7, 1, 8, 4, 9, 4, 60, 11, 61, 7, 12, 6, 13, 7, 62, 41, 0, 15, 0, 32, 32, -1, 6, 3, 31, 28, 32, 29, 28, 30, 1, 31, 5, 62, 42, 0, 15, 0, 63, 63, -1, 9, 64, 34, 65, 34, 66, 35, 67, 36, 68, 1, 69, 10, 70, 37, 71, 37, 62, 43, 0 </int_array>
+			<string> "variants" </string>
+			<array  len="46" shared="false">
+				<vector2> 512, 312 </vector2>
+				<bool> False </bool>
+				<resource  resource_type="Shape2D" path="local://2">  </resource>
+				<matrix32> 1.25523, -0, 0, 1.20291, 0.0508279, -0.585311 </matrix32>
+				<int> 1 </int>
+				<int> 0 </int>
+				<real> 1 </real>
+				<real> 0 </real>
+				<real> 2 </real>
+				<int> 5 </int>
+				<bool> True </bool>
+				<vector2> 0, 0 </vector2>
+				<real> -1 </real>
+				<resource  external="0">  </resource>
+				<vector2> 0.0508279, -0.585311 </vector2>
+				<vector2> 1.25523, 1.20291 </vector2>
+				<vector2> 0.4, 0.4 </vector2>
+				<resource  external="1">  </resource>
+				<vector2> -0.0339411, -0.0394329 </vector2>
+				<vector2> 0.445424, 0.409851 </vector2>
+				<vector2> 0, 50 </vector2>
+				<int> 15 </int>
+				<vector2> 0.7, 0.7 </vector2>
+				<int> -10000000 </int>
+				<int> 10000000 </int>
+				<real> 0.2 </real>
+				<vector2> 605.203, 557.388 </vector2>
+				<vector2> 20, 1 </vector2>
+				<resource  resource_type="Shape2D" path="local://3">  </resource>
+				<matrix32> 2.56539, -0, 0, 4.03847, -4.52987, 7.60899 </matrix32>
+				<dictionary  shared="false">
+					<string> "_editor_collapsed" </string>
+					<bool> True </bool>
+				</dictionary>
+				<vector2> -4.52987, 7.60899 </vector2>
+				<vector2> 2.56539, 4.03847 </vector2>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<real> -30 </real>
+				<real> 21 </real>
+				<real> 49 </real>
+				<int> 2 </int>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<vector2> 577.655, 364.74 </vector2>
+				<vector2> 3.49505, 0.366641 </vector2>
+				<dictionary  shared="false">
+					<string> "_editor_collapsed" </string>
+					<bool> True </bool>
+				</dictionary>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<vector2> 757.252, 300.663 </vector2>
+				<vector2> 529.126, 244.389 </vector2>
+			</array>
+			<string> "version" </string>
+			<int> 2 </int>
+		</dictionary>
+
+	</main_resource>
+</resource_file>
