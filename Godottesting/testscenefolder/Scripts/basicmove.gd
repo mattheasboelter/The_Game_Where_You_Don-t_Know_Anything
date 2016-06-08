@@ -21,6 +21,7 @@ func _ready():
 
 	set_mode(2) # Disallow rotation on the player
 
+
 func _input(event):
 	# Handle Keypress Events
 	if(event.is_pressed()):
@@ -34,6 +35,20 @@ func _input(event):
 		if(event.is_action('JUMP') and not event.is_echo()):
 			if(self_collision.is_colliding()):
 				Jump()
+
+		### Handle Gravity changes
+		# Down
+		if(event.is_action('GRAVITY_DOWN') and not event.is_echo()):
+			ChangeGravityDirection(0, 1)
+		# Up
+		if(event.is_action('GRAVITY_UP') and not event.is_echo()):
+			ChangeGravityDirection(0, -1)
+		# Right
+		if(event.is_action('GRAVITY_RIGHT') and not event.is_echo()):
+			ChangeGravityDirection(1, 0)
+		# Left
+		if(event.is_action('GRAVITY_LEFT') and not event.is_echo()):
+			ChangeGravityDirection(-1, 0)
 
 	# Handle Key Release Events
 	else:
@@ -63,5 +78,5 @@ func _fixed_process(delta):
 func Jump():
 	set_axis_velocity(Vector2(0, -jump_height))
 
-	# is_moving_left = false
-	# is_moving_right = false
+func ChangeGravityDirection(x, y):
+	Physics2DServer.area_set_param(get_world_2d().get_space(), Physics2DServer.AREA_PARAM_GRAVITY_VECTOR, Vector2(x, y)) #Change Gravity Direction
