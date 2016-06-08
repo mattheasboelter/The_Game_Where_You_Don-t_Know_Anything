@@ -14,4 +14,7 @@ func _input(event):
 		# Handle MOVE LEFT Event
 		if(event.is_action('WALK') and not event.is_echo()):
 			animation_player.play("RobotWalkCycle")
-	
+		if(Input.is_key_pressed(KEY_A)):
+			get_node(".").set_flip_h(true)
+		if(Input.is_key_pressed(KEY_D)):
+			get_node(".").set_flip_h(false)
