@@ -30,8 +30,8 @@ func _ready():
 	self_collision = get_node('player_collision_sensor')
 	self_collision.add_exception(self)
 
-	animation_player = get_node("AnimationPlayer")
-	sprite = get_node("AnimationSprite")
+	animation_player = get_node("AnimatedSprite/AnimationPlayer")
+	sprite = get_node("AnimatedSprite")
 
 	set_mode(2) # Disallow rotation on the player
 
@@ -84,14 +84,14 @@ func _fixed_process(delta):
 		if(self_collision.is_colliding()):
 			set_axis_velocity(Vector2(-speed, 0))
 			sprite.set_flip_h(true)
-			animation_player.play("RobotWalkCycle")
+			animation_player.play("Robot_walk")
 
 	# move right
 	if(player_state == MOVING_RIGHT):
 		if(self_collision.is_colliding()):
 			set_axis_velocity(Vector2(speed, 0))
 			sprite.set_flip_h(false)
-			animation_player.play("RobotWalkCycle")
+			animation_player.play("Robot_walk")
 
 	if(player_state == JUMPING):
 		if(self_collision.is_colliding()):
