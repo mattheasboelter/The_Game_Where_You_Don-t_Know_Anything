@@ -7,10 +7,15 @@ const RIGHT = Vector2(1, 0)
 const LEFT = Vector2(-1, 0)
 
 var self_collision
+var animation_player
+var sprite
 
-var is_moving_left = false
-var is_moving_right = false
-var is_jumping = false
+var STANDING = 0
+var MOVING_LEFT = 1
+var MOVING_RIGHT = 2
+var JUMPING = 3
+
+var player_state # Current Character state
 
 var jump_timer = 0;
 
@@ -25,6 +30,9 @@ func _ready():
 	self_collision = get_node('player_collision_sensor')
 	self_collision.add_exception(self)
 
+	animation_player = get_node("AnimationPlayer")
+	sprite = get_node("AnimationSprite")
+
 	set_mode(2) # Disallow rotation on the player
 
 
@@ -33,13 +41,14 @@ func _input(event):
 	if(event.is_pressed()):
 		# Handle MOVE LEFT Event
 		if(event.is_action('MOVE_LEFT') and not event.is_echo()):
-			is_moving_left = true
+			player_state = MOVING_LEFT
 		# Handle MOVE RIGHT Event
 		if(event.is_action('MOVE_RIGHT') and not event.is_echo()):
-			is_moving_right = true
+			player_state = MOVING_RIGHT
 		# Handle JUMP Event
 		if(event.is_action('JUMP') and not event.is_echo()):
 			if(self_collision.is_colliding()):
+				player_state = JUMPING
 				Jump()
 
 		### Handle Gravity changes
@@ -60,10 +69,10 @@ func _input(event):
 	else:
 		# Handle MOVE LEFT Event
 		if(event.is_action('MOVE_LEFT') and not event.is_echo()):
-			is_moving_left = false
+			player_state = STANDING
 		# Handle MOVE RIGHT Event
 		if(event.is_action('MOVE_RIGHT') and not event.is_echo()):
-			is_moving_right = false
+			player_state = STANDING
 
 
 func _fixed_process(delta):
@@ -71,14 +80,22 @@ func _fixed_process(delta):
 	var y = get_pos().y
 
 	# move left
-	if(is_moving_left):
+	if(player_state == MOVING_LEFT):
 		if(self_collision.is_colliding()):
 			set_axis_velocity(Vector2(-speed, 0))
+			sprite.set_flip_h(true)
+			animation_player.play("RobotWalkCycle")
 
 	# move right
-	if(is_moving_right):
+	if(player_state == MOVING_RIGHT):
 		if(self_collision.is_colliding()):
 			set_axis_velocity(Vector2(speed, 0))
+			sprite.set_flip_h(false)
+			animation_player.play("RobotWalkCycle")
+
+	if(player_state == JUMPING):
+		if(self_collision.is_colliding()):
+			player_state = STANDING
 
 
 func Jump():
