@@ -35,16 +35,18 @@ func _ready():
 
 	set_mode(2) # Disallow rotation on the player
 
+	animation_player.play("Robot_stand")
+
 
 func _input(event):
 	# Handle Keypress Events
 	if(event.is_pressed()):
 		# Handle MOVE LEFT Event
 		if(event.is_action('MOVE_LEFT') and not event.is_echo()):
-			player_state = MOVING_LEFT
+			Move(MOVING_LEFT)
 		# Handle MOVE RIGHT Event
 		if(event.is_action('MOVE_RIGHT') and not event.is_echo()):
-			player_state = MOVING_RIGHT
+			Move(MOVING_RIGHT)
 		# Handle JUMP Event
 		if(event.is_action('JUMP') and not event.is_echo()):
 			if(self_collision.is_colliding()):
@@ -70,9 +72,11 @@ func _input(event):
 		# Handle MOVE LEFT Event
 		if(event.is_action('MOVE_LEFT') and not event.is_echo()):
 			player_state = STANDING
+			animation_player.play("Robot_stand")
 		# Handle MOVE RIGHT Event
 		if(event.is_action('MOVE_RIGHT') and not event.is_echo()):
 			player_state = STANDING
+			animation_player.play("Robot_stand")
 
 
 func _fixed_process(delta):
@@ -84,14 +88,12 @@ func _fixed_process(delta):
 		if(self_collision.is_colliding()):
 			set_axis_velocity(Vector2(-speed, 0))
 			sprite.set_flip_h(true)
-			animation_player.play("Robot_walk")
 
 	# move right
 	if(player_state == MOVING_RIGHT):
 		if(self_collision.is_colliding()):
 			set_axis_velocity(Vector2(speed, 0))
-			sprite.set_flip_h(false)
-			animation_player.play("Robot_walk")
+
 
 	if(player_state == JUMPING):
 		if(self_collision.is_colliding()):
@@ -100,6 +102,17 @@ func _fixed_process(delta):
 
 func Jump():
 	set_axis_velocity(Vector2(0, -jump_height))
+
+func Move(move_direction):
+	animation_player.play("Robot_walk")
+
+	if(move_direction == MOVING_LEFT):
+		sprite.set_flip_h(true)
+		player_state = MOVING_LEFT
+
+	if(move_direction == MOVING_RIGHT):
+		sprite.set_flip_h(false)
+		player_state = MOVING_RIGHT
 
 func ChangeGravityDirection(direction):
 	var rotation
