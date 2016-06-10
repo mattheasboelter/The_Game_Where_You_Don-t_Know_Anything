@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="11" version="2.0" version_name="Godot Engine v2.0.stable.official">
 	<ext_resource path="res://testscenefolder/Scripts/basicmove.gd" type="Script" index="0"></ext_resource>
-	<ext_resource path="res://robotspriteframs/SpritesWalk.res" type="SpriteFrames" index="3"></ext_resource>
-	<ext_resource path="res://robotspriteframs/SpritesStand.res" type="SpriteFrames" index="2"></ext_resource>
 	<ext_resource path="res://robotspriteframs/Robot jump frame.tex" type="Texture" index="1"></ext_resource>
+	<ext_resource path="res://robotspriteframs/SpritesStand.res" type="SpriteFrames" index="2"></ext_resource>
+	<ext_resource path="res://robotspriteframs/SpritesWalk.res" type="SpriteFrames" index="3"></ext_resource>
 	<resource type="RectangleShape2D" path="local://2">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 9.47223, 8.72589 </vector2>
@@ -115,7 +115,7 @@
 	</resource>
 	<resource type="RectangleShape2D" path="local://3">
 		<real name="custom_solver_bias"> 0 </real>
-		<vector2 name="extents"> 10, 10 </vector2>
+		<vector2 name="extents"> 10, 9.3075 </vector2>
 
 	</resource>
 	<main_resource>
@@ -221,13 +221,13 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="479"> 				-1, -1, 1, 0, -1, 0, 0, 0, 0, 26, 2, -1, 23, 3, 0, 4, 1, 5, 2, 6, 3, 7, 1, 8, 4, 9, 4, 10, 5, 11, 6, 12, 6, 13, 7, 14, 8, 15, 1, 16, 5, 17, 9, 18, 10, 19, 1, 20, 10, 21, 11, 22, 7, 23, 12, 24, 12, 25, 13, 0, 1, 0, 32, 27, -1, 5, 3, 14, 28, 15, 29, 2, 30, 1, 31, 5, 0, 1, 0, 38, 33, -1, 6, 3, 16, 28, 17, 34, 10, 35, 18, 36, 4, 37, 19, 0, 1, 0, 39, 39, -1, 16, 40, 4, 41, 1, 42, 10, 43, 20, 44, 21, 45, 21, 46, 22, 47, 22, 48, 10, 49, 10, 50, 10, 51, 6, 52, 23, 53, 23, 54, 23, 55, 23, 0, 1, 0, 56, 56, -1, 1, 57, 24, 0, 5, 0, 58, 58, -1, 10, 59, 4, 60, 7, 61, 25, 62, 26, 63, 27, 64, 28, 65, 10, 66, 6, 67, 29, 68, 30, 0, 0, 0, 69, 69, -1, 13, 3, 31, 28, 32, 4, 1, 5, 33, 6, 34, 7, 1, 8, 4, 9, 4, 70, 11, 71, 7, 12, 6, 13, 7, 72, 35, 0, 7, 0, 32, 32, -1, 6, 3, 36, 28, 37, 29, 33, 30, 1, 31, 5, 72, 38, 0, 7, 0, 73, 73, -1, 9, 74, 39, 75, 39, 76, 40, 77, 41, 78, 1, 79, 10, 80, 42, 81, 42, 72, 43, 0, 0, 0, 69, 82, -1, 13, 3, 44, 28, 45, 4, 1, 5, 33, 6, 34, 7, 1, 8, 4, 9, 4, 70, 11, 71, 7, 12, 6, 13, 7, 72, 46, 0, 10, 0, 32, 32, -1, 6, 3, 36, 28, 37, 29, 33, 30, 1, 31, 5, 72, 47, 0, 10, 0, 73, 73, -1, 9, 74, 39, 75, 39, 76, 40, 77, 41, 78, 1, 79, 10, 80, 42, 81, 42, 72, 48, 0, 0, 0, 69, 83, -1, 13, 3, 49, 28, 45, 4, 1, 5, 33, 6, 34, 7, 1, 8, 4, 9, 4, 70, 11, 71, 7, 12, 6, 13, 7, 72, 46, 0, 13, 0, 32, 32, -1, 6, 3, 36, 28, 37, 29, 33, 30, 1, 31, 5, 72, 47, 0, 13, 0, 73, 73, -1, 9, 74, 39, 75, 39, 76, 40, 77, 41, 78, 1, 79, 10, 80, 42, 81, 42, 72, 48, 0, 0, 0, 69, 84, -1, 13, 3, 50, 28, 45, 4, 1, 5, 33, 6, 34, 7, 1, 8, 4, 9, 4, 70, 11, 71, 7, 12, 6, 13, 7, 72, 46, 0, 16, 0, 32, 32, -1, 6, 3, 36, 28, 37, 29, 33, 30, 1, 31, 5, 72, 47, 0, 16, 0, 73, 73, -1, 9, 74, 39, 75, 39, 76, 40, 77, 41, 78, 1, 79, 10, 80, 42, 81, 42, 72, 48, 0 </int_array>
+			<int_array  len="477"> 				-1, -1, 1, 0, -1, 0, 0, 0, 0, 26, 2, -1, 23, 3, 0, 4, 1, 5, 2, 6, 3, 7, 1, 8, 4, 9, 4, 10, 5, 11, 6, 12, 6, 13, 7, 14, 8, 15, 1, 16, 5, 17, 9, 18, 10, 19, 1, 20, 10, 21, 11, 22, 7, 23, 12, 24, 12, 25, 13, 0, 1, 0, 32, 27, -1, 5, 3, 14, 28, 15, 29, 2, 30, 1, 31, 5, 0, 1, 0, 38, 33, -1, 6, 3, 16, 28, 17, 34, 10, 35, 18, 36, 4, 37, 19, 0, 1, 0, 39, 39, -1, 16, 40, 4, 41, 1, 42, 10, 43, 20, 44, 21, 45, 21, 46, 22, 47, 22, 48, 10, 49, 10, 50, 10, 51, 6, 52, 23, 53, 23, 54, 23, 55, 23, 0, 1, 0, 56, 56, -1, 1, 57, 24, 0, 5, 0, 58, 58, -1, 10, 59, 4, 60, 7, 61, 25, 62, 26, 63, 27, 64, 28, 65, 10, 66, 6, 67, 29, 68, 30, 0, 0, 0, 69, 69, -1, 13, 3, 31, 28, 32, 4, 1, 5, 33, 6, 34, 7, 1, 8, 4, 9, 4, 70, 11, 71, 7, 12, 6, 13, 7, 72, 35, 0, 7, 0, 32, 32, -1, 6, 3, 36, 28, 37, 29, 33, 30, 1, 31, 5, 72, 38, 0, 7, 0, 73, 73, -1, 9, 74, 39, 75, 39, 76, 40, 77, 41, 78, 1, 79, 10, 80, 42, 81, 42, 72, 43, 0, 0, 0, 69, 82, -1, 12, 3, 44, 28, 45, 4, 1, 5, 33, 6, 34, 7, 1, 8, 4, 9, 4, 70, 11, 71, 7, 12, 6, 13, 7, 0, 10, 0, 32, 32, -1, 6, 3, 36, 28, 37, 29, 33, 30, 1, 31, 5, 72, 46, 0, 10, 0, 73, 73, -1, 9, 74, 39, 75, 39, 76, 40, 77, 41, 78, 1, 79, 10, 80, 42, 81, 42, 72, 47, 0, 0, 0, 69, 83, -1, 13, 3, 48, 28, 49, 4, 1, 5, 33, 6, 34, 7, 1, 8, 4, 9, 4, 70, 11, 71, 7, 12, 6, 13, 7, 72, 50, 0, 13, 0, 32, 32, -1, 6, 3, 36, 28, 37, 29, 33, 30, 1, 31, 5, 72, 46, 0, 13, 0, 73, 73, -1, 9, 74, 39, 75, 39, 76, 40, 77, 41, 78, 1, 79, 10, 80, 42, 81, 42, 72, 47, 0, 0, 0, 69, 84, -1, 13, 3, 51, 28, 52, 4, 1, 5, 33, 6, 34, 7, 1, 8, 4, 9, 4, 70, 11, 71, 7, 12, 6, 13, 7, 72, 50, 0, 16, 0, 32, 32, -1, 6, 3, 36, 28, 37, 29, 33, 30, 1, 31, 5, 72, 46, 0, 16, 0, 73, 73, -1, 9, 74, 39, 75, 39, 76, 40, 77, 41, 78, 1, 79, 10, 80, 42, 81, 42, 72, 47, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="51" shared="false">
+			<array  len="53" shared="false">
 				<vector2> 512, 300 </vector2>
 				<bool> False </bool>
 				<resource  resource_type="Shape2D" path="local://2">  </resource>
-				<matrix32> 1.7, -0, 0, 3.5, -0.968546, 1.5497 </matrix32>
+				<matrix32> 3.01163, -0, 0, 3.5, 1.25622, 1.5497 </matrix32>
 				<int> 1 </int>
 				<int> 0 </int>
 				<real> 1 </real>
@@ -238,10 +238,10 @@
 				<vector2> 0, 0 </vector2>
 				<real> -1 </real>
 				<resource  external="0">  </resource>
-				<vector2> -0.968546, 1.5497 </vector2>
-				<vector2> 1.7, 3.5 </vector2>
-				<vector2> 0, 2.22888 </vector2>
-				<vector2> 1, 0.965546 </vector2>
+				<vector2> 1.25622, 1.5497 </vector2>
+				<vector2> 3.01163, 3.5 </vector2>
+				<vector2> 0.397611, 1.02205 </vector2>
+				<vector2> 1.41528, 0.927833 </vector2>
 				<vector2> 0, 50 </vector2>
 				<int> 15 </int>
 				<vector2> 0.7, 0.7 </vector2>
@@ -278,22 +278,24 @@
 					<string> "_edit_lock_" </string>
 					<bool> True </bool>
 				</dictionary>
-				<vector2> 577.655, 364.74 </vector2>
-				<vector2> 3.49505, 0.366641 </vector2>
+				<vector2> 577.655, 357.848 </vector2>
+				<vector2> 3.49505, 0.151258 </vector2>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<vector2> 757.611, 293.008 </vector2>
+				<vector2> 3.49505, 0.127415 </vector2>
 				<dictionary  shared="false">
 					<string> "_editor_collapsed" </string>
 					<bool> True </bool>
 				</dictionary>
-				<dictionary  shared="false">
-					<string> "_edit_lock_" </string>
-					<bool> True </bool>
-				</dictionary>
-				<dictionary  shared="false">
-					<string> "_edit_lock_" </string>
-					<bool> True </bool>
-				</dictionary>
-				<vector2> 757.252, 300.663 </vector2>
-				<vector2> 529.126, 244.389 </vector2>
+				<vector2> 898.478, 237.721 </vector2>
+				<vector2> 3.49505, 0.141113 </vector2>
 			</array>
 			<string> "version" </string>
 			<int> 2 </int>

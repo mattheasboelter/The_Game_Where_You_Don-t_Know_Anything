@@ -22,8 +22,10 @@ var jump_timer = 0;
 var speed = 70
 var jump_height = 200
 
+var jumpframe
+
 func _ready():
-	# set_process(true)
+	#set_process(true)
 	set_fixed_process(true)
 	set_process_input(true)
 
@@ -36,6 +38,8 @@ func _ready():
 	set_mode(2) # Disallow rotation on the player
 
 	animation_player.play("Robot_stand")
+	
+	
 
 
 func _input(event):
@@ -52,6 +56,7 @@ func _input(event):
 			if(self_collision.is_colliding()):
 				player_state = JUMPING
 				Jump()
+				
 
 		### Handle Gravity changes
 		# Down
@@ -97,11 +102,15 @@ func _fixed_process(delta):
 
 	if(player_state == JUMPING):
 		if(self_collision.is_colliding()):
-			player_state = STANDING
+			if(get_tree().get_frame() - jumpframe > 10):
+				player_state = STANDING
+				animation_player.play("Robot_stand")
 
 
 func Jump():
 	set_axis_velocity(Vector2(0, -jump_height))
+	animation_player.play("Robot_jump")
+	jumpframe = get_tree().get_frame()
 
 func Move(move_direction):
 	animation_player.play("Robot_walk")
