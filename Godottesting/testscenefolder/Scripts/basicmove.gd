@@ -94,17 +94,19 @@ func _fixed_process(delta):
 	var x = get_pos().x
 	var y = get_pos().y
 
-
+	for key in ['MOVING_LEFT', 'MOVING_RIGHT']:
+		if((player_state & states[key]) and self_collision.is_colliding()):
+			set_axis_velocity(Vector2(speed, 0))
 	# move left
-	if(player_state == states.MOVING_LEFT):
-		if(self_collision.is_colliding()):
-			set_axis_velocity(Vector2(-speed, 0))
-			sprite.set_flip_h(true)
+	#if(player_state == states.MOVING_LEFT):
+	#	if(self_collision.is_colliding()):
+	#		set_axis_velocity(Vector2(-speed, 0))
+			#sprite.set_flip_h(true)
 
 	# move right
-	if(player_state == states.MOVING_RIGHT):
-		if(self_collision.is_colliding()):
-			set_axis_velocity(Vector2(speed, 0))
+	#if(player_state == states.MOVING_RIGHT):
+	#	if(self_collision.is_colliding()):
+	#		set_axis_velocity(Vector2(speed, 0))
 
 
 	if(player_state == states.JUMPING):
