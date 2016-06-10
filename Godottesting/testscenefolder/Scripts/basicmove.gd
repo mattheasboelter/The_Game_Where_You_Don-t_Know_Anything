@@ -1,21 +1,31 @@
 extends RigidBody2D
 
 # Constants for Gravity Direction
-const DOWN = Vector2(0, 1)
-const UP = Vector2(0, -1)
-const RIGHT = Vector2(1, 0)
-const LEFT = Vector2(-1, 0)
+
+var directions = {
+	'DOWN' : Vector2(0, 1),
+	'UP'   : Vector2(0, -1),
+	'RIGHT': Vector2(1, 0),
+	'LEFT' : Vector2(-1, 0)
+}
+
+var states = {
+	'STANDING': 0,
+	'MOVING'  : 1,
+	'JUMPING' : 2
+}
 
 var self_collision
 var animation_player
 var sprite
 
-var STANDING = 0
-var MOVING_LEFT = 1
-var MOVING_RIGHT = 2
-var JUMPING = 3
 
-var player_state # Current Character state
+var player_state = 0 # Current Character state
+
+const zero_vector = Vector2(0 , 0)
+var move_vector = zero_vector
+
+#var flip = false
 
 var jump_timer = 0;
 
@@ -47,6 +57,7 @@ func _input(event):
 	if(event.is_pressed()):
 		# Handle MOVE LEFT Event
 		if(event.is_action('MOVE_LEFT') and not event.is_echo()):
+
 			Move(MOVING_LEFT)
 		# Handle MOVE RIGHT Event
 		if(event.is_action('MOVE_RIGHT') and not event.is_echo()):
@@ -56,24 +67,18 @@ func _input(event):
 			if(self_collision.is_colliding()):
 				player_state = JUMPING
 				Jump()
-				
+
 
 		### Handle Gravity changes
-		# Down
-		if(event.is_action('GRAVITY_DOWN') and not event.is_echo()):
-			ChangeGravityDirection(DOWN)
-		# Up
-		if(event.is_action('GRAVITY_UP') and not event.is_echo()):
-			ChangeGravityDirection(UP)
-		# Right
-		if(event.is_action('GRAVITY_RIGHT') and not event.is_echo()):
-			ChangeGravityDirection(RIGHT)
-		# Left
-		if(event.is_action('GRAVITY_LEFT') and not event.is_echo()):
-			ChangeGravityDirection(LEFT)
+		for key in directions.keys():
+			if(event.is_action("GRAVITY_" + key) and not event.is_echo()):
+				ChangeGravityDirection(directions[key])
+		
 
 	# Handle Key Release Events
 	else:
+		player_state = states.STANDING
+		move_vector = zero_vector
 		# Handle MOVE LEFT Event
 		if(event.is_action('MOVE_LEFT') and not event.is_echo()):
 			player_state = STANDING
@@ -84,9 +89,11 @@ func _input(event):
 			animation_player.play("Robot_stand")
 
 
+
 func _fixed_process(delta):
 	var x = get_pos().x
 	var y = get_pos().y
+
 
 	# move left
 	if(player_state == MOVING_LEFT):
@@ -105,6 +112,7 @@ func _fixed_process(delta):
 			if(get_tree().get_frame() - jumpframe > 10):
 				player_state = STANDING
 				animation_player.play("Robot_stand")
+
 
 
 func Jump():
