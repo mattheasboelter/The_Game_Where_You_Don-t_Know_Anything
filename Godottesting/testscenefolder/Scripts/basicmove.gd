@@ -11,9 +11,10 @@ var directions = {
 
 var states = {
 	'STANDING'    : 0,
-	'MOVING_LEFT' : 1,
-	'MOVING_RIGHT': 2,
-	'JUMPING'     : 4
+	'JUMPING'     : 1,
+	'MOVING_LEFT' : 2,
+	'MOVING_RIGHT': 4
+	
 }
 
 var self_collision
@@ -48,6 +49,7 @@ func _ready():
 
 	set_mode(2) # Disallow rotation on the player
 
+	player_state = states.STANDING
 	animation_player.play("Robot_stand")
 	
 	
@@ -65,13 +67,13 @@ func _input(event):
 		if(event.is_action('JUMP') and not event.is_echo()):
 			if(self_collision.is_colliding()):
 				player_state |= states.JUMPING  #Set Jumping
-				player_state ^= states.STANDING #Set Not Standing
+				player_state &= ~states.STANDING #Set Not Standing
 				Jump()
 
 		### Handle Gravity changes
 		for key in directions.keys():
 			if(event.is_action("GRAVITY_" + key) and not event.is_echo()):
-				ChangeGravityDirection(directions[key])
+				ChangeGravityDirection(key)
 		
 
 	# Handle Key Release Events
@@ -91,17 +93,17 @@ func _input(event):
 
 
 func _fixed_process(delta):
-	var x = get_pos().x
-	var y = get_pos().y
+	#var x = get_pos().x
+	#var y = get_pos().y
 
 	for key in ['MOVING_LEFT', 'MOVING_RIGHT']:
-		if((player_state & states[key]) and self_collision.is_colliding()):
-			set_axis_velocity(Vector2(speed, 0))
+		if((player_state & states[key]) and self_collision.is_colliding()):               #Not ideal piece ahead
+			set_axis_velocity(Vector2(speed * ((player_state & states[key]) - 3), 0)) #Temporary workaround for the lack of ternary operators
 	# move left
 	#if(player_state == states.MOVING_LEFT):
 	#	if(self_collision.is_colliding()):
 	#		set_axis_velocity(Vector2(-speed, 0))
-			#sprite.set_flip_h(true)
+	#		#sprite.set_flip_h(true)
 
 	# move right
 	#if(player_state == states.MOVING_RIGHT):
@@ -109,11 +111,12 @@ func _fixed_process(delta):
 	#		set_axis_velocity(Vector2(speed, 0))
 
 
-	if(player_state == states.JUMPING):
+	if(player_state & states.JUMPING):
+		#print("JUMP!")
 		if(self_collision.is_colliding()):
 			if(get_tree().get_frame() - jumpframe > 10):
 				player_state |= states.STANDING #Set Standing
-				player_state ^= states.JUMPING  #Set Not Jumping
+				player_state &= ~states.JUMPING  #Set Not Jumping
 				animation_player.play("Robot_stand")
 
 
@@ -134,18 +137,14 @@ func Jump():
 #		sprite.set_flip_h(false)
 #		player_state = MOVING_RIGHT
 
-func ChangeGravityDirection(direction):
-	var rotation
+func ChangeGravityDirection(key):
+	var rotations = {
+		'DOWN' : 0,
+		'RIGHT': 90,
+		'UP'   : 180,
+		'LEFT' : 270
+	}
 
-	if(direction == Vector2(0, 1)):
-		rotation = 0
-	elif(direction == Vector2(0, -1)):
-		rotation = 180
-	elif(direction == Vector2(1, 0)):
-		rotation = -90
-	elif(direction == Vector2(-1, 0)):
-		rotation = 90
+	self_collision.set_rot(rotations[key])
 
-	self_collision.set_rot(rotation)
-
-	Physics2DServer.area_set_param(get_world_2d().get_space(), Physics2DServer.AREA_PARAM_GRAVITY_VECTOR, direction) #Change Gravity Direction
+	Physics2DServer.area_set_param(get_world_2d().get_space(), Physics2DServer.AREA_PARAM_GRAVITY_VECTOR, directions[key]) #Change Gravity Direction
