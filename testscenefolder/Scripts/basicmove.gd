@@ -33,6 +33,8 @@ var gravity_change = false
 var gravity_direction
 
 func _ready():
+	gravity_direction = 'DOWN'
+
 	set_fixed_process(true)
 	set_process_input(true)
 
@@ -104,7 +106,7 @@ func _fixed_process(delta):
 				animation_player.play("Robot_stand")
 
 func Jump():
-	set_axis_velocity(Vector2(0, -traits.JUMP_HEIGHT))
+	set_axis_velocity(-(directions[gravity_direction] * traits.JUMP_HEIGHT))
 	animation_player.play("Robot_jump")
 	jumpframe = get_tree().get_frame()
 
