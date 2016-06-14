@@ -29,8 +29,10 @@ var sprite
 var jump_timer = 0
 var jumpframe
 
+var gravity_change = false
+var gravity_direction
+
 func _ready():
-	#set_process(true)
 	set_fixed_process(true)
 	set_process_input(true)
 
@@ -39,8 +41,6 @@ func _ready():
 
 	animation_player = get_node("AnimatedSprite/AnimationPlayer")
 	sprite = get_node("AnimatedSprite")
-
-	set_mode(2) # Disallow rotation on the player
 
 	player_state = states.STANDING
 	animation_player.play("Robot_stand")
@@ -63,6 +63,7 @@ func _input(event):
 		# Handle Gravity changes
 		for key in directions.keys():
 			if(event.is_action("GRAVITY_" + key) and not event.is_echo()):
+				# self.set_rot(deg2rad(90))
 				ChangeGravityDirection(key)
 
 	# Handle Key Release Events
@@ -73,6 +74,17 @@ func _input(event):
 				animation_player.play("Robot_stand")
 
 func _fixed_process(delta):
+	if(gravity_change):
+		var rotations = {
+			'DOWN' : 0,
+			'RIGHT': 90,
+			'UP'   : 180,
+			'LEFT' : 270
+		}
+
+		self.set_rot(deg2rad(rotations[gravity_direction]))
+		gravity_change = false
+
 	for key in ['MOVING_LEFT', 'MOVING_RIGHT']:
 		if((player_state & states[key]) and self_collision.is_colliding()): #Not ideal piece ahead
 			set_axis_velocity(Vector2(traits.SPEED * ((player_state & states[key]) - 3), 0)) #Temporary workaround for the lack of ternary operators
@@ -90,12 +102,7 @@ func Jump():
 	jumpframe = get_tree().get_frame()
 
 func ChangeGravityDirection(key):
-	var rotations = {
-		'DOWN' : 0,
-		'RIGHT': 90,
-		'UP'   : 180,
-		'LEFT' : 270
-	}
+	gravity_change = true
+	gravity_direction = key
 
-	self_collision.set_rot(rotations[key])
 	Physics2DServer.area_set_param(get_world_2d().get_space(), Physics2DServer.AREA_PARAM_GRAVITY_VECTOR, directions[key]) #Change Gravity Direction
