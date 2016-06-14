@@ -54,6 +54,10 @@ func _input(event):
 				animation_player.play("Robot_walk")
 				sprite.set_flip_h(states['MOVING_' + key] & states.MOVING_LEFT != 0)
 
+				if(gravity_direction == 'UP' || gravity_direction == 'RIGHT'):
+					sprite.set_flip_h(!(states['MOVING_' + key] & states.MOVING_LEFT != 0))
+
+
 		if(event.is_action('JUMP') and not event.is_echo()):
 			if(self_collision.is_colliding()):
 				player_state |= states.JUMPING  #Set Jumping
