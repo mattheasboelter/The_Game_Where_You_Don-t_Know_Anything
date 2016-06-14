@@ -87,7 +87,10 @@ func _fixed_process(delta):
 
 	for key in ['MOVING_LEFT', 'MOVING_RIGHT']:
 		if((player_state & states[key]) and self_collision.is_colliding()): #Not ideal piece ahead
-			set_axis_velocity(Vector2(traits.SPEED * ((player_state & states[key]) - 3), 0)) #Temporary workaround for the lack of ternary operators
+			if(gravity_direction == 'LEFT' || gravity_direction == 'RIGHT'):
+				set_axis_velocity(Vector2(0, traits.SPEED * ((player_state & states[key]) - 3))) #Temporary workaround for the lack of ternary operators
+			else:
+				set_axis_velocity(Vector2(traits.SPEED * ((player_state & states[key]) - 3), 0)) #Temporary workaround for the lack of ternary operators
 
 	if(player_state & states.JUMPING):
 		if(self_collision.is_colliding()):
