@@ -65,9 +65,9 @@ func _input(event):
 			if(event.is_action('MOVE_' + key) and not event.is_echo()):
 				player_state.move_dir += player_state.move_directions[key] #Avoid prefering RIGHT if both are pressed
 				animation_player.play("Robot_walk")
-				if(gravity_direction == 'DOWN' || gravity_direction == 'LEFT'):
+				if(gravity_direction in ['DOWN', 'LEFT']):
 					sprite.set_flip_h(key == 'LEFT')
-				if(gravity_direction == 'UP' || gravity_direction == 'RIGHT'):
+				if(gravity_direction in ['UP', 'RIGHT']):
 					sprite.set_flip_h(key != 'LEFT')
 
 		if(event.is_action('JUMP') and not event.is_echo()):
@@ -101,8 +101,8 @@ func _fixed_process(delta):
 	for key in ['LEFT', 'RIGHT']:
 		if((player_state.move_dir == player_state.move_directions[key]) and self_collision.is_colliding()):
 			var mult = {false : -1, true : 1}
-			var speed = traits.SPEED * mult[player_state.move_dir == player_state.move_directions.RIGHT] #((player_state.move_dir & player_state.move_directions[key]) - 3)
-			if(gravity_direction == 'LEFT' || gravity_direction == 'RIGHT'):
+			var speed = traits.SPEED * mult[player_state.move_dir == player_state.move_directions.RIGHT]
+			if(gravity_direction in ['LEFT', 'RIGHT']):
 				set_axis_velocity(Vector2(0, speed))
 			else:
 				set_axis_velocity(Vector2(speed, 0))
