@@ -27,12 +27,6 @@ const directions = {
 	'LEFT' : Vector2(-1, 0)
 }
 
-const states = {
-	'STANDING'    : 0,
-	'JUMPING'     : 1,
-	'MOVING_LEFT' : 2,
-	'MOVING_RIGHT': 4
-}
 var player_state #Current Character state
 
 const traits = {
@@ -44,8 +38,6 @@ var self_collision
 var animation_player
 var sprite
 
-#var jump_timer = 0
-var jumpframe
 
 var gravity_change = false
 var gravity_direction
@@ -73,22 +65,18 @@ func _input(event):
 			if(event.is_action('MOVE_' + key) and not event.is_echo()):
 				player_state.move_dir += player_state.move_directions[key] #Avoid prefering RIGHT if both are pressed
 				animation_player.play("Robot_walk")
-				#sprite.set_flip_h(states['MOVING_' + key] & states.MOVING_LEFT != 0)
 				if(gravity_direction == 'DOWN' || gravity_direction == 'LEFT'):
 					sprite.set_flip_h(key == 'LEFT')
 				if(gravity_direction == 'UP' || gravity_direction == 'RIGHT'):
 					sprite.set_flip_h(key != 'LEFT')
 
-
 		if(event.is_action('JUMP') and not event.is_echo()):
 			if(self_collision.is_colliding()):
 				player_state.jumping = player_state.jumps.JUMPING
-				#Jump()
 
 		# Handle Gravity changes
 		for key in directions.keys():
 			if(event.is_action("GRAVITY_" + key) and not event.is_echo()):
-				# self.set_rot(deg2rad(90))
 				ChangeGravityDirection(key)
 
 	# Handle Key Release Events
