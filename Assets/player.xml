@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="8" version="2.0" version_name="Godot Engine v2.0.stable.official">
-	<ext_resource path="res://testscenefolder/Scripts/basicmove.gd" type="Script" index="0"></ext_resource>
-	<ext_resource path="res://robotspriteframs/SpritesWalk.res" type="SpriteFrames" index="1"></ext_resource>
-	<ext_resource path="res://robotjump.anm" type="Animation" index="3"></ext_resource>
-	<ext_resource path="res://robotwalk.anm" type="Animation" index="5"></ext_resource>
-	<ext_resource path="res://robotShoot.anm" type="Animation" index="2"></ext_resource>
-	<ext_resource path="res://robotstand.anm" type="Animation" index="4"></ext_resource>
+	<ext_resource path="res://Animations/robotstand.anm" type="Animation" index="4"></ext_resource>
+	<ext_resource path="res://Animations/robotwalk.anm" type="Animation" index="5"></ext_resource>
+	<ext_resource path="res://Animations/robotjump.anm" type="Animation" index="3"></ext_resource>
+	<ext_resource path="res://Animations/robotShoot.anm" type="Animation" index="2"></ext_resource>
+	<ext_resource path="res://robotspriteframs/Robotshoot.res" type="SpriteFrames" index="1"></ext_resource>
+	<ext_resource path="res://Scripts/player.gd" type="Script" index="0"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 11.6322, 20 </vector2>
