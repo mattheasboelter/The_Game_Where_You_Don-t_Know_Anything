@@ -56,7 +56,7 @@ func _ready():
 	sprite = get_node("AnimatedSprite")
 	
 	player_state.jump_frame = get_tree().get_frame()
-	animation_player.play("Robot_stand")
+	animation_player.play("robotstand")
 
 func _input(event):
 	# Handle Keypress Events
@@ -64,7 +64,7 @@ func _input(event):
 		for key in ['LEFT', 'RIGHT']:
 			if(event.is_action('MOVE_' + key) and not event.is_echo()):
 				player_state.move_dir += player_state.move_directions[key] #Avoid prefering RIGHT if both are pressed
-				animation_player.play("Robot_walk")
+				animation_player.play("robotwalk")
 				if(gravity_direction in ['DOWN', 'LEFT']):
 					sprite.set_flip_h(key == 'LEFT')
 				if(gravity_direction in ['UP', 'RIGHT']):
@@ -84,7 +84,7 @@ func _input(event):
 		for key in ['LEFT', 'RIGHT']:
 			if(event.is_action('MOVE_' + key) and not event.is_echo()):
 				player_state.move_dir = player_state.move_directions.NONE
-				animation_player.play("Robot_stand")
+				animation_player.play("robotstand")
 
 func _fixed_process(delta):
 	if(gravity_change):
@@ -110,7 +110,7 @@ func _fixed_process(delta):
 	if(self_collision.is_colliding()):
 		if(player_state.jumping == player_state.jumps.JUMPING):
 			set_axis_velocity(-(directions[gravity_direction] * traits.JUMP_HEIGHT))
-			animation_player.play("Robot_jump")
+			animation_player.play("robotjump")
 			player_state.jump_frame = get_tree().get_frame()
 			
 			player_state.jumping = player_state.jumps.JUMP_ECHO
@@ -118,12 +118,12 @@ func _fixed_process(delta):
 			player_state.jumping = player_state.jumps.NOT_JUMPING
 			
 			if(player_state.move_dir == player_state.move_directions.NONE):
-				animation_player.play("Robot_stand")
+				animation_player.play("robotstand")
 			elif(not player_state.move_dir == (player_state.move_directions.LEFT + player_state.move_directions.RIGHT)): #Avoid trying to walk both ways
-				animation_player.play("Robot_walk")
+				animation_player.play("robotwalk")
 				
 	if(player_state.move_dir == (player_state.move_directions.LEFT + player_state.move_directions.RIGHT) and self_collision.is_colliding()):
-		animation_player.play("Robot_stand")
+		animation_player.play("robotstand")
 
 func ChangeGravityDirection(key):
 	gravity_change = true
