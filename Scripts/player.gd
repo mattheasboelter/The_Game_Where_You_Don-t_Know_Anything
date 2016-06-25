@@ -3,14 +3,14 @@ extends RigidBody2D
 # Constants for Gravity Direction
 
 class PlayerState:
-	
+
 	const move_directions = {
 		'NONE' : 0,
 		'LEFT' : 1,
 		'RIGHT': 2
 	}
 	var move_dir = move_directions.NONE
-	
+
 	const jumps = {
 		'NOT_JUMPING' : 0,
 		'JUMPING'     : 1,
@@ -18,7 +18,7 @@ class PlayerState:
 	}
 	var jumping
 	var jump_frame
-	
+
 
 const directions = {
 	'DOWN' : Vector2(0, 1),
@@ -34,7 +34,7 @@ const traits = {
 	'JUMP_HEIGHT': 200
 }
 
-var self_collision
+var collision_detection
 var animation_player
 var sprite
 
@@ -49,12 +49,11 @@ func _ready():
 	set_fixed_process(true)
 	set_process_input(true)
 
-	self_collision = get_node('player_collision_sensor')
-	self_collision.add_exception(self)
+	collision_detection = get_node('collision_detection')
 
 	animation_player = get_node("AnimatedSprite/AnimationPlayer")
 	sprite = get_node("AnimatedSprite")
-	
+
 	player_state.jump_frame = get_tree().get_frame()
 	animation_player.play("robotstand")
 
@@ -71,7 +70,7 @@ func _input(event):
 					sprite.set_flip_h(key != 'LEFT')
 
 		if(event.is_action('JUMP') and not event.is_echo()):
-			if(self_collision.is_colliding()):
+			if(collision_detection.colliding):
 				player_state.jumping = player_state.jumps.JUMPING
 
 		# Handle Gravity changes
@@ -99,7 +98,7 @@ func _fixed_process(delta):
 		gravity_change = false
 
 	for key in ['LEFT', 'RIGHT']:
-		if((player_state.move_dir == player_state.move_directions[key]) and self_collision.is_colliding()):
+		if((player_state.move_dir == player_state.move_directions[key]) and collision_detection.colliding):
 			var mult = {false : -1, true : 1}
 			var speed = traits.SPEED * mult[player_state.move_dir == player_state.move_directions.RIGHT]
 			if(gravity_direction in ['LEFT', 'RIGHT']):
@@ -107,22 +106,22 @@ func _fixed_process(delta):
 			else:
 				set_axis_velocity(Vector2(speed, 0))
 
-	if(self_collision.is_colliding()):
+	if(collision_detection.colliding):
 		if(player_state.jumping == player_state.jumps.JUMPING):
 			set_axis_velocity(-(directions[gravity_direction] * traits.JUMP_HEIGHT))
 			animation_player.play("robotjump")
 			player_state.jump_frame = get_tree().get_frame()
-			
+
 			player_state.jumping = player_state.jumps.JUMP_ECHO
 		if(get_tree().get_frame() - player_state.jump_frame > 20 && (player_state.jumping == player_state.jumps.JUMP_ECHO)):
 			player_state.jumping = player_state.jumps.NOT_JUMPING
-			
+
 			if(player_state.move_dir == player_state.move_directions.NONE):
 				animation_player.play("robotstand")
 			elif(not player_state.move_dir == (player_state.move_directions.LEFT + player_state.move_directions.RIGHT)): #Avoid trying to walk both ways
 				animation_player.play("robotwalk")
-				
-	if(player_state.move_dir == (player_state.move_directions.LEFT + player_state.move_directions.RIGHT) and self_collision.is_colliding()):
+
+	if(player_state.move_dir == (player_state.move_directions.LEFT + player_state.move_directions.RIGHT) and collision_detection.colliding):
 		animation_player.play("robotstand")
 
 func ChangeGravityDirection(key):
