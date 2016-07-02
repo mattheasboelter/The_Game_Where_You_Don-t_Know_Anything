@@ -24,6 +24,13 @@ const gravity_directions = {
 
 var gravity = StateMachine.new("gravity", gravity_directions.DOWN, gravity_directions)
 
+const powerups = {
+	'NONE'           : 0,
+	'GRAVITY_CHANGE' : 1
+}
+
+var powerup = StateMachine.new("powerup", powerups.NONE, powerups)
+
 func update():
 	move.update()
 	jump.update()

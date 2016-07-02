@@ -1,7 +1,5 @@
 extends RigidBody2D
 
-# Constants for Gravity Direction
-
 var PlayerState = preload("PlayerState.gd")
 
 var player_state #Current Character state
@@ -33,6 +31,7 @@ func _ready():
 func _input(event):
 	# Handle Keypress Events
 	if(event.is_pressed()):
+		# Handle Walking
 		for key in ['LEFT', 'RIGHT']:
 			if(event.is_action('MOVE_' + key) and not event.is_echo()):
 				player_state.move.set_inc(player_state.move_directions[key]) #Avoid prefering RIGHT if both are pressed
@@ -42,6 +41,7 @@ func _input(event):
 				if(player_state.gravity.is(['UP', 'RIGHT'])):
 					sprite.set_flip_h(key != 'LEFT')
 
+		# Handle Jumps
 		if(event.is_action('JUMP') and not event.is_echo()):
 			if(self_collision.is_colliding()):
 				player_state.jump.set(player_state.jumps.JUMPING)
@@ -49,7 +49,8 @@ func _input(event):
 		# Handle Gravity changes
 		for key in player_state.gravity_directions.keys():
 			if(event.is_action("GRAVITY_" + key) and not event.is_echo()):
-				player_state.gravity.set(player_state.gravity_directions[key])
+				if(player_state.powerup.get() & player_state.powerups.GRAVITY_CHANGE): # P-P-POWER UP!
+					player_state.gravity.set(player_state.gravity_directions[key])
 
 	# Handle Key Release Events
 	else:
@@ -60,7 +61,7 @@ func _input(event):
 
 func _fixed_process(delta):
 	player_state.update()
-	
+
 	if(player_state.gravity.current != player_state.gravity.previous):
 		var rotations = {  
 			'DOWN' : 0,
@@ -70,8 +71,12 @@ func _fixed_process(delta):
 		}
 
 		var dir = player_state.gravity.get()
-		self.set_rotd(rotations[player_state.gravity.getKey()])
-		Physics2DServer.area_set_param(get_world_2d().get_space(), Physics2DServer.AREA_PARAM_GRAVITY_VECTOR, dir) #Change Gravity Direction
+		var rot = rotations[player_state.gravity.getKey()]
+		var delta = abs((rot - int(get_rotd())) % 180)
+		var epsilon = 2
+		if(delta > 90 - epsilon or delta < 90 + epsilon):
+			self.set_rotd(rot)
+			Physics2DServer.area_set_param(get_world_2d().get_space(), Physics2DServer.AREA_PARAM_GRAVITY_VECTOR, dir) #Change Gravity Direction
 
 
 	for key in ['LEFT', 'RIGHT']:
