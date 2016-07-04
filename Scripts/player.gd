@@ -80,7 +80,8 @@ func _fixed_process(delta):
 
 
 	for key in ['LEFT', 'RIGHT']:
-		if((player_state.move.get() == player_state.move_directions[key]) and self_collision.is_colliding()):
+		if((player_state.move.get() == player_state.move_directions[key]) and \
+		  (self_collision.is_colliding() or player_state.move.get() != player_state.move_directions.NONE)):
 			var mult = {false : -1, true : 1}
 			var speed = traits.SPEED * mult[player_state.move.get() == player_state.move_directions.RIGHT]
 			if(player_state.gravity.is(['LEFT', 'RIGHT'])):
