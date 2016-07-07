@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resource_file type="PackedScene" subresource_count="16" version="2.0" version_name="Godot Engine v2.0.stable.official">
+	<ext_resource path="res://DarkTilemap/cobblestones#1(1).tex" type="Texture" index="0"></ext_resource>
+	<ext_resource path="res://DarkTilemap/wood#1.tex" type="Texture" index="1"></ext_resource>
+	<ext_resource path="res://DarkTilemap/stone stairs #1.tex" type="Texture" index="2"></ext_resource>
+	<ext_resource path="res://DarkTilemap/Stairs Tile #2.tex" type="Texture" index="3"></ext_resource>
+	<ext_resource path="res://DarkTilemap/stonewall#1.tex" type="Texture" index="4"></ext_resource>
+	<ext_resource path="res://DarkTilemap/stoneTerminal#1.tex" type="Texture" index="5"></ext_resource>
+	<ext_resource path="res://DarkTilemap/stoneJunction#1.tex" type="Texture" index="6"></ext_resource>
+	<resource type="ConvexPolygonShape2D" path="local://13">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2_array name="points" len="4"> 			16, -12, 16, 9, -16, 9, -16, -12 </vector2_array>
+
+	</resource>
+	<resource type="RectangleShape2D" path="local://2">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2 name="extents"> 16, 12 </vector2>
+
+	</resource>
+	<resource type="ConvexPolygonShape2D" path="local://9">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2_array name="points" len="4"> 			-16, 16, 16, -16, 16, 0, 0, 16 </vector2_array>
+
+	</resource>
+	<resource type="ConvexPolygonShape2D" path="local://4">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2_array name="points" len="3"> 			-16, -16, 0, -16, -16, 0 </vector2_array>
+
+	</resource>
+	<resource type="ConvexPolygonShape2D" path="local://5">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2_array name="points" len="3"> 			-16, 0, -16, 0, -16, -16 </vector2_array>
+
+	</resource>
+	<resource type="RectangleShape2D" path="local://11">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2 name="extents"> 6, 16 </vector2>
+
+	</resource>
+	<resource type="RectangleShape2D" path="local://12">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2 name="extents"> 6, 12 </vector2>
+
+	</resource>
+	<resource type="RectangleShape2D" path="local://8">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2 name="extents"> 6, 6 </vector2>
+
+	</resource>
+	<main_resource>
+		<dictionary name="_bundled" shared="false">
+			<string> "conn_count" </string>
+			<int> 0 </int>
+			<string> "conns" </string>
+			<int_array  len="0"> 				 </int_array>
+			<string> "editable_instances" </string>
+			<array  len="0" shared="false">
+			</array>
+			<string> "names" </string>
+			<string_array  len="34">
+				<string> "Node2D" </string>
+				<string> "floorstones" </string>
+				<string> "transform/pos" </string>
+				<string> "texture" </string>
+				<string> "Sprite" </string>
+				<string> "StaticBody2D" </string>
+				<string> "input/pickable" </string>
+				<string> "shapes/0/shape" </string>
+				<string> "shapes/0/transform" </string>
+				<string> "shapes/0/trigger" </string>
+				<string> "collision/layers" </string>
+				<string> "collision/mask" </string>
+				<string> "constant_linear_velocity" </string>
+				<string> "constant_angular_velocity" </string>
+				<string> "friction" </string>
+				<string> "bounce" </string>
+				<string> "CollisionPolygon2D" </string>
+				<string> "build_mode" </string>
+				<string> "polygon" </string>
+				<string> "shape_range" </string>
+				<string> "trigger" </string>
+				<string> "floorwood" </string>
+				<string> "CollisionShape2D" </string>
+				<string> "shape" </string>
+				<string> "_update_shape_index" </string>
+				<string> "stairs" </string>
+				<string> "stairbacks" </string>
+				<string> "shapes/1/shape" </string>
+				<string> "shapes/1/transform" </string>
+				<string> "shapes/1/trigger" </string>
+				<string> "wall" </string>
+				<string> "wallend" </string>
+				<string> "walljoint" </string>
+				<string> "__meta__" </string>
+			</string_array>
+			<string> "node_count" </string>
+			<int> 22 </int>
+			<string> "node_paths" </string>
+			<array  len="0" shared="false">
+			</array>
+			<string> "nodes" </string>
+			<int_array  len="384"> 				-1, -1, 0, 0, -1, 0, 0, 0, 0, 4, 1, -1, 2, 2, 0, 3, 1, 0, 1, 0, 5, 5, -1, 10, 6, 2, 7, 3, 8, 4, 9, 2, 10, 5, 11, 5, 12, 6, 13, 7, 14, 8, 15, 7, 0, 2, 0, 16, 16, -1, 4, 17, 9, 18, 10, 19, 6, 20, 2, 0, 0, 0, 4, 21, -1, 2, 2, 11, 3, 12, 0, 4, 0, 5, 5, -1, 10, 6, 2, 7, 13, 8, 14, 9, 2, 10, 5, 11, 5, 12, 6, 13, 7, 14, 8, 15, 7, 0, 5, 0, 22, 22, -1, 3, 23, 13, 20, 2, 24, 9, 0, 0, 0, 4, 25, -1, 2, 2, 15, 3, 16, 0, 7, 0, 5, 5, -1, 10, 6, 2, 7, 17, 8, 14, 9, 2, 10, 5, 11, 5, 12, 6, 13, 7, 14, 8, 15, 7, 0, 8, 0, 16, 16, -1, 4, 17, 9, 18, 18, 19, 6, 20, 2, 0, 0, 0, 4, 26, -1, 2, 2, 19, 3, 20, 0, 10, 0, 5, 5, -1, 14, 2, 21, 6, 2, 7, 22, 8, 14, 9, 2, 27, 23, 28, 14, 29, 2, 10, 5, 11, 5, 12, 6, 13, 7, 14, 8, 15, 7, 0, 11, 0, 16, 16, -1, 4, 17, 9, 18, 24, 19, 25, 20, 2, 0, 0, 0, 4, 30, -1, 2, 2, 26, 3, 27, 0, 13, 0, 5, 5, -1, 10, 6, 2, 7, 28, 8, 4, 9, 2, 10, 5, 11, 5, 12, 6, 13, 7, 14, 8, 15, 7, 0, 14, 0, 22, 22, -1, 3, 23, 28, 20, 2, 24, 9, 0, 0, 0, 4, 31, -1, 2, 2, 29, 3, 30, 0, 16, 0, 5, 5, -1, 11, 2, 31, 6, 2, 7, 32, 8, 33, 9, 2, 10, 5, 11, 5, 12, 6, 13, 7, 14, 8, 15, 7, 0, 17, 0, 22, 22, -1, 4, 2, 34, 23, 32, 20, 2, 24, 9, 0, 0, 0, 4, 32, -1, 3, 2, 35, 3, 36, 33, 37, 0, 19, 0, 5, 5, -1, 10, 6, 2, 7, 38, 8, 14, 9, 2, 10, 5, 11, 5, 12, 6, 13, 7, 14, 8, 15, 7, 0, 20, 0, 22, 22, -1, 3, 23, 38, 20, 2, 24, 9, 0 </int_array>
+			<string> "variants" </string>
+			<array  len="39" shared="false">
+				<vector2> 16, 16 </vector2>
+				<resource  external="0">  </resource>
+				<bool> False </bool>
+				<resource  resource_type="Shape2D" path="local://13">  </resource>
+				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
+				<int> 1 </int>
+				<vector2> 0, 0 </vector2>
+				<real> 0 </real>
+				<real> 1 </real>
+				<int> 0 </int>
+				<vector2_array  len="4"> 					16, -12, 16, 9, -16, 9, -16, -12 </vector2_array>
+				<vector2> 16, 48 </vector2>
+				<resource  external="1">  </resource>
+				<resource  resource_type="Shape2D" path="local://2">  </resource>
+				<matrix32> 1, -0, 0, 1, 0, 0 </matrix32>
+				<vector2> 48, 16 </vector2>
+				<resource  external="2">  </resource>
+				<resource  resource_type="Shape2D" path="local://9">  </resource>
+				<vector2_array  len="4"> 					-16, 16, 16, -16, 16, 0, 0, 16 </vector2_array>
+				<vector2> 48, 48 </vector2>
+				<resource  external="3">  </resource>
+				<vector2> 0.153889, 0 </vector2>
+				<resource  resource_type="Shape2D" path="local://4">  </resource>
+				<resource  resource_type="Shape2D" path="local://5">  </resource>
+				<vector2_array  len="4"> 					-16, 0, 0, -16, -16, -16, -16, 0 </vector2_array>
+				<vector2> 0, 1 </vector2>
+				<vector2> 80, 16 </vector2>
+				<resource  external="4">  </resource>
+				<resource  resource_type="Shape2D" path="local://11">  </resource>
+				<vector2> 80, 48 </vector2>
+				<resource  external="5">  </resource>
+				<vector2> 0.0305634, -0.0305634 </vector2>
+				<resource  resource_type="Shape2D" path="local://12">  </resource>
+				<matrix32> 1, -0, 0, 1, -0.0305634, -3.96944 </matrix32>
+				<vector2> -0.0305634, -3.96944 </vector2>
+				<vector2> 16, 80 </vector2>
+				<resource  external="6">  </resource>
+				<dictionary  shared="false">
+					<string> "_editor_collapsed" </string>
+					<bool> True </bool>
+				</dictionary>
+				<resource  resource_type="Shape2D" path="local://8">  </resource>
+			</array>
+			<string> "version" </string>
+			<int> 2 </int>
+		</dictionary>
+
+	</main_resource>
+</resource_file>
